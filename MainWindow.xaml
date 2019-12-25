@@ -35,7 +35,7 @@
             <Label Content="请在下方输入Email正文:" Margin="10,0,0,0" Width="200" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <Button Content="..." Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Command="Open"/>
         </StackPanel>
-        <TextBox Text="{Binding FiltedText}" 
+        <TextBox Text="{Binding FiltedText, UpdateSourceTrigger=PropertyChanged}" 
                 TextWrapping="NoWrap" 
                 HorizontalScrollBarVisibility="Auto" 
                 VerticalScrollBarVisibility="Auto"
