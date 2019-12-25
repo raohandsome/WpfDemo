@@ -2,6 +2,8 @@
 using System.Windows;
 using UIHelper;
 
+using System.Text.RegularExpressions;
+
 namespace TextViewer
 {
     public partial class MainWindow : Window
@@ -74,10 +76,24 @@ namespace TextViewer
 
         private void OnSendEmail_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = _Model != null 
-                && !string.IsNullOrEmpty(_Model.EmailAddress) 
-                && !string.IsNullOrEmpty(_Model.FiltedText) 
+            e.CanExecute = _Model != null
+                && IsEmailVaild(_Model.EmailAddress)
+                && !string.IsNullOrEmpty(_Model.EmailAddress)
+                && !string.IsNullOrEmpty(_Model.FiltedText)
                 && !string.IsNullOrEmpty(_Model.PictureFileName);
+        }
+
+        public static bool IsEmailVaild(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return false;
+            }
+            email = email.Trim();
+            string pattern = @"^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$";
+
+            Regex aRegex = new Regex(pattern);
+            return aRegex.IsMatch(email);
         }
     }
 }
