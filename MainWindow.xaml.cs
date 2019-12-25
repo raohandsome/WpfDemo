@@ -74,7 +74,10 @@ namespace TextViewer
 
         private void OnSendEmail_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = _Model != null && !string.IsNullOrEmpty(_Model.EmailAddress);
+            e.CanExecute = _Model != null 
+                && !string.IsNullOrEmpty(_Model.EmailAddress) 
+                && !string.IsNullOrEmpty(_Model.FiltedText) 
+                && !string.IsNullOrEmpty(_Model.PictureFileName);
         }
     }
 }
