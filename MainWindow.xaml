@@ -48,7 +48,7 @@
                 <Button Content="..." Width="20" VerticalAlignment="Top" Margin="10,5,10,0" HorizontalAlignment="Right" Command="{StaticResource OpenPictureFile}"/>
             </DockPanel>
             <StackPanel>
-                <TextBox Height="auto"  Margin="10,0,10,0" Text="{Binding PictureFileName}"/>
+                <TextBox Height="auto"  Margin="10,0,10,0" Text="{Binding PictureFileName, UpdateSourceTrigger=PropertyChanged}"/>
                 <GroupBox Header="图片预览"  Margin="10,0,10,0" >
                     <Image Width="auto" Height="110" Source="{Binding PictureFileName}"/>
                 </GroupBox>
